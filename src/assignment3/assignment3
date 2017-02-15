@@ -1,0 +1,33 @@
+select s.name, p.name, max(production/hour)
+
+from powerunit p, powerproduction pp, supervisor s, supervision sv
+
+where p.id = pp.powerunit_id and s.id = sv.supervisor_id and sv.powerunit_id = p.id
+
+group by pp.powerunit_id, p.name
+
+order by pp.production desc;
+
+select s.name, p.name, sum(production)
+
+from powerunit p, powerproduction pp, supervisor s, supervision sv
+
+where p.id = pp.powerunit_id and s.id == sv.supervisor_id and sv.powerunit_id = p.id
+
+group by pp.powerunit_id, p.name
+
+order by sum(production) desc
+
+limit 3;
+
+select p.name, sum(production)
+
+from powerunit p, powerproduction pp
+
+where p.id = pp.powerunit_id
+
+group by pp.powerunit_id, p.name
+
+order by sum(production)
+
+limit 1;

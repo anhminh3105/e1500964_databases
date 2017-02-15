@@ -1,0 +1,141 @@
+CREATE TABLE IF NOT EXISTS "powerunit" (id int primary key not null, name varchar(50), location varchar(50), owner varchar(50));
+
+CREATE TABLE powerproduction(id int, hour int, production int, powerunit_id int);
+
+insert into powerunit values(0, 'a', 'Vaasa', 'VAMK');
+
+insert into powerunit values(1, 'b', 'Helsinki', 'VAMK');
+
+insert into powerunit values(2, 'c', 'Vaasa', 'Ahventie');
+
+insert into powerproduction values(0, 0, 0, 0);
+
+insert into powerproduction values(1, 1, 1, 1);
+
+insert into powerproduction values(2, 2, 2, 2);
+
+insert into powerproduction values(3, 3, 3, 3);
+
+insert into powerproduction values(4, 4, 4, 4);
+
+insert into powerproduction values(5,5,5,5);
+
+insert into powerproduction values(6,6,6,6);
+
+insert into powerproduction values(7,7,7,7);
+
+insert into powerproduction values(8,8,8,8);
+
+insert into powerproduction values(9,9,9,9);
+
+insert into powerproduction values(11,11,11,11);
+
+insert into powerproduction values(22,22,22,22);
+
+insert into powerproduction values(33,33,33,33);
+
+insert into powerproduction values(44,44,44,44);
+
+insert into powerproduction values(55,55,55,55);
+
+insert into powerproduction values(66,66,66,66);
+
+insert into powerproduction values(77,77,777,77);
+
+insert into powerproduction values(78,87,78,78);
+
+insert into powerproduction values(99,99,99,99);
+
+insert into powerproduction values(23,23,23,23);
+
+insert into powerproduction values(14,14,1,41);
+
+insert into powerproduction values(25,25,25,25);
+
+insert into powerproduction values(45,45,45,45);
+
+insert into powerproduction values(36,36,36,36);
+
+
+CREATE TABLE powerproduction(id int primary key not null, hour int, production int, powerunit_id int);
+
+insert into powerproduction values(0,0,10,0);
+
+insert into powerproduction values(1,1,10,0);
+
+insert into powerproduction values(2,1,20,2);
+
+insert into powerproduction values(3,2,20,2);
+
+insert into powerproduction values(4,3,10,1);
+
+insert into powerproduction values(5,2,40,1);
+
+insert into powerproduction values(6,4,10,2);
+
+insert into powerproduction values(7,5,10,0);
+
+insert into powerproduction values(8,6,10,1);
+
+insert into powerproduction values(9,7,10,2);
+
+insert into powerproduction values(10,8,10,1);
+
+insert into powerproduction values(11,9,10,2);
+
+insert into powerproduction values(12,10,10,1);
+
+insert into powerproduction values(13,11,10,0);
+
+insert into powerproduction values(14,12,10,0);
+
+insert into powerproduction values(15,13,10,2);
+
+insert into powerproduction values(16,14,10,1);
+
+insert into powerproduction values(17,15,10,2);
+
+insert into powerproduction values(18,16,10,2);
+
+insert into powerproduction values(19,17,10,1);
+
+insert into powerproduction values(20,18,10,1);
+
+insert into powerproduction values(21,19,10,1);
+
+insert into powerproduction values(22,20,10,1);
+
+insert into powerproduction values(23,21,10,0);
+
+select * from powerunit;
+
+insert into powerproduction values(24,22,15,0);
+
+insert into powerproduction values(25,23,55,2);
+
+select * from powerproduction;
+     
+select * from data where name like 'a';
+
+select * from powerunit where name like 'a';
+
+select * from powerunit where name like 'b';
+
+select * from powerunit where name like 'c' where powerunit_id like (select id from powerunit where name like 'a');
+
+on where powerunit_id like (select id from powerunit where name like 'b
+
+
+on where powerunit_id like (select id from powerunit where name like 'c
+
+select sum(production) from powerproduction where powerunit_id=0;
+       
+select sum(production) from powerproduction where powerunit_id=1;
+
+select sum(production) from powerproduction where powerunit_id=2;
+
+select sum(production) from powerproduction;
+
+select sum(production) from powerproduction group by powerunit_id;
+
+werunit_id, sum(production) from powerproduction group by powerunit_id;
