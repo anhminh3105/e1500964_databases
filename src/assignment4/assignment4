@@ -1,0 +1,17 @@
+elect title from Movie where director = 'Steven Spielberg';
+select distinct year from Movie, Rating where Movie.mID = Rating.mID and stars > 3 order by year;
+select title from Movie where mID not in (select mID from Rating);
+select name from Reviewer, Rating where Reviewer.rID = Rating.rID and RatingDate is NULL;
+select name as reviewerName, title as movieTitle, stars, ratingDate from Movie, Rating, Reviewer where Movie.mID = Rating.mID and Rating.rID = Reviewer.rID order by name, title, stars;
+select name as reviewer, title from Rating ra1, Movie, Reviewer where Reviewer.rID = ra1.rID and Movie.mID = ra1.mID and exists( select * from Rating ra2 where ra1.rID = ra2.rID and ra1.mID = ra2.mID and ra1.stars < ra2.stars and ra2.ratingDate > ra1.ratingDate);
+select distinct title, ra1.stars from Movie, Rating ra1
+
+    -> where Movie.mID = ra1.mID
+
+    -> and not exists (select * from Rating ra2
+
+    -> where ra1.mID = ra2.mID and ra1.stars < ra2.stars)
+
+    -> order by title;
+    select title, avg(stars)  as averageRating from Rating, Movie where Movie.mID = Rating.mID group by Rating.mID order by averageRating desc, title;
+    select name from Reviewer re1, Rating ra1 where re1.rID = ra1.rID group by name having count(ra1.rID) >= 3;
